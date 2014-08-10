@@ -17,10 +17,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     sudo yum install -y git wget
 
     # setting git
-    cat <<EOF >>/home/vagrant/.ssh/config
-      Host github.com
-        StrictHostKeyChecking no
-      EOF
+    SSH_CONFIG_FILE=/home/vagrant/.ssh/config
+    echo 'Host github.com' >> ${SSH_CONFIG_FILE}
+    echo '  StrictHostKeyChecking no' >> ${SSH_CONFIG_FILE}
 
     # install ruby
     sudo yum install -y git ruby
